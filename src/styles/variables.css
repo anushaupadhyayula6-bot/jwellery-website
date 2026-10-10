@@ -1,0 +1,9 @@
+:root {
+  --bg: #0b0908; --bg-2: #14100d; --ivory: #f3ece2; --muted: #a39789;
+  --rose: #d4a47c; --champagne: #e6cfa8; --bronze: #8a6445; --line: rgba(212, 164, 124, .22);
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  --pad: clamp(24px, 6vw, 96px);
+  --bs-body-bg: var(--bg); --bs-body-color: var(--ivory); --bs-body-font-family: var(--sans);
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "id": "295cbb39-4b71-4a8a-9fd9-afaf82b35e64",
+    "name": "Earrings",
+    "description": "Sutiable for Functions",
+    "price": 40000,
+    "image": "https://i.etsystatic.com/18244334/r/il/333883/5880079504/il_1080xN.5880079504_6p9z.jpg",
+    "createdAt": "2026-10-10T11:20:53.559Z",
+    "updatedAt": "2026-10-10T11:20:53.559Z"
+  },
+  {
+    "id": "verde-necklace",
+    "name": "The Verdé Necklace",
+    "description": "A rose-gold necklace set with pale green and clear stones, presented with matching drop earrings.",
+    "price": null,
+    "image": "/frames/desktop/064.webp",
+    "createdAt": "2026-10-10T00:00:00.000Z",
+    "updatedAt": "2026-10-10T00:00:00.000Z"
+  }
+]

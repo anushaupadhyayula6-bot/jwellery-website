@@ -1,0 +1,11 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@fontsource/cormorant-garamond/300.css'
+import '@fontsource/cormorant-garamond/300-italic.css'
+import '@fontsource/jost/300.css'
+import '@fontsource/jost/400.css'
+import './styles/variables.css'
+import './styles/global.css'
+import App from './App'
+createRoot(document.getElementById('root')!).render(<StrictMode><App /></StrictMode>)
