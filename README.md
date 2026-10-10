@@ -10,15 +10,17 @@ npm run preview
 ```
 Optimized frames are already in `public/frames/` (desktop 121 + mobile 61 WebP, ~7 MB total).
 
-## Admin and product catalog
-The catalog and admin panel use the included Node API and a persistent `data/products.json` file. For local development:
+## Supabase catalog, admin, and contact enquiries
+The Vercel frontend connects to Supabase for persistent products and contact enquiries. The browser uses only the public anon key; row-level security policies protect the database.
 
-1. Copy `.env.example` to `.env`, then replace the example admin password with a long, unique password.
-2. Start the API in one terminal: `npm run api`.
-3. Start the site in another terminal: `npm run dev`.
-4. Open `/admin/login` to manage products. Creating a product returns to `/products`; edits and deletes stay in the admin panel.
+1. In Supabase, open **SQL Editor** and run `supabase/migrations/001_catalog_and_enquiries.sql`.
+2. In **Authentication → Settings**, disable public sign-ups.
+3. In **Authentication → Users**, create the administrator account. Sign in at `/admin/login` with that email and password.
+4. Redeploy the Vercel site. The project URL and anon key are configured in `src/lib/supabase.ts`; optional `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` build variables override them.
 
-The API protects admin routes with an HTTP-only session cookie and stores product changes on the server. Deploy this as a Node service (build with `npm run build`, then set `ADMIN_USERNAME`, `ADMIN_PASSWORD`, `NODE_ENV=production`, and run `npm start`). Use HTTPS and a persistent disk for `data/products.json`; a static-only host cannot run the admin API or save product changes.
+The migration enables public product reads and contact-form submissions; product CRUD and enquiry management require an authenticated user. Only create trusted admin users while public sign-ups are disabled. Product images can be site paths or HTTPS URLs.
+
+For local development, run `npm install` and `npm run dev`; the Supabase-backed frontend does not need a separate Node API process. The legacy `server.mjs` remains available for Render deployments but is not used by the Vercel frontend.
 
 ## Regenerate frames from your PNGs
 Put the original 240 PNGs in `source-assets/frames_24fps/` (kept out of the web bundle), then:
@@ -41,4 +43,4 @@ Pin length: `end` in `NecklaceSequence.tsx` (4.4 × viewport desktop, 3.2 mobile
 
 ## Deploy
 `npm run build`, upload `dist/` to a static host (Netlify, Vercel, Cloudflare Pages, S3). The app is configured to run from the domain root.
-The `public/_redirects` fallback is copied into `dist/` so direct links to app routes such as `/products`, `/product`, and `/checkout` serve the SPA on Netlify and Cloudflare Pages. The admin, product catalog, and contact submissions also require the Node API; a static-only upload can render routes but cannot persist these records.
+The `public/_redirects` fallback is copied into `dist/` so direct links to app routes such as `/products`, `/product`, and `/checkout` serve the SPA on Netlify and Cloudflare Pages. Products, admin CRUD, and contact submissions are stored in Supabase.

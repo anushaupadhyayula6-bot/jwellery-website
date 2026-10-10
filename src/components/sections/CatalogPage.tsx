@@ -16,7 +16,7 @@ export default function CatalogPage() {
   }, [])
 
   if (loading) return <div className="route-loading">Loading products…</div>
-  if (error) return <section className="section catalog-page"><div className="container-xl mx-auto"><h1>Products</h1><p className="catalog-error">{error}. Start the API server to load the catalog.</p></div></section>
+  if (error) return <section className="section catalog-page"><div className="container-xl mx-auto"><h1>Products</h1><p className="catalog-error">{error}. Check that the Supabase database setup has been completed.</p></div></section>
 
   const selected = selectedId ? products.find(item => item.id === selectedId) : undefined
   if (selectedId && !selected) return <section className="section catalog-page"><div className="container-xl mx-auto"><a href="/products">← All products</a><h1>Product not found.</h1></div></section>
