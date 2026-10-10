@@ -40,5 +40,5 @@ Empty fields are hidden. Price shows "Price to be confirmed" until set.
 Pin length: `end` in `NecklaceSequence.tsx` (4.4 × viewport desktop, 3.2 mobile). Chapter timing: `CHAPTERS`. Cache: `CAP`/`WIN` in `useImageSequence.ts`.
 
 ## Deploy
-`npm run build`, upload `dist/` to any static host (Netlify, Vercel, Cloudflare Pages, S3). Relative base is set, so subfolders work.
+`npm run build`, upload `dist/` to a static host (Netlify, Vercel, Cloudflare Pages, S3). The app is configured to run from the domain root.
 The `public/_redirects` fallback is copied into `dist/` so direct links to app routes such as `/products`, `/product`, and `/checkout` serve the SPA on Netlify and Cloudflare Pages. The admin, product catalog, and contact submissions also require the Node API; a static-only upload can render routes but cannot persist these records.
